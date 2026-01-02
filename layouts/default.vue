@@ -27,14 +27,58 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </button>
-            <button class="md:hidden text-morandi-text hover:text-morandi-accent p-2">
+            <button 
+              @click="isMenuOpen = !isMenuOpen"
+              class="md:hidden text-morandi-text hover:text-morandi-accent p-2 transition-transform duration-200"
+              :class="{ 'rotate-90': isMenuOpen }"
+            >
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                <path v-if="!isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
         </div>
       </div>
+
+      <!-- Mobile Menu -->
+      <transition
+        enter-active-class="transition duration-200 ease-out"
+        enter-from-class="opacity-0 -translate-y-4"
+        enter-to-class="opacity-100 translate-y-0"
+        leave-active-class="transition duration-150 ease-in"
+        leave-from-class="opacity-100 translate-y-0"
+        leave-to-class="opacity-0 -translate-y-4"
+      >
+        <div v-show="isMenuOpen" class="md:hidden bg-morandi-card border-t border-gray-100">
+          <div class="px-4 pt-2 pb-6 space-y-2">
+            <NuxtLink 
+              to="/" 
+              class="block px-3 py-3 text-base font-medium text-morandi-text hover:bg-morandi-hover hover:text-morandi-accent rounded-lg transition-colors"
+              active-class="bg-morandi-hover text-morandi-accent"
+              @click="isMenuOpen = false"
+            >
+              首页
+            </NuxtLink>
+            <NuxtLink 
+              to="/categories" 
+              class="block px-3 py-3 text-base font-medium text-morandi-text hover:bg-morandi-hover hover:text-morandi-accent rounded-lg transition-colors"
+              active-class="bg-morandi-hover text-morandi-accent"
+              @click="isMenuOpen = false"
+            >
+              文章分类
+            </NuxtLink>
+            <NuxtLink 
+              to="/about" 
+              class="block px-3 py-3 text-base font-medium text-morandi-text hover:bg-morandi-hover hover:text-morandi-accent rounded-lg transition-colors"
+              active-class="bg-morandi-hover text-morandi-accent"
+              @click="isMenuOpen = false"
+            >
+              关于我
+            </NuxtLink>
+          </div>
+        </div>
+      </transition>
     </nav>
 
     <!-- 搜索模态框 -->
@@ -61,6 +105,7 @@
 
 <script setup>
 const isSearchOpen = ref(false);
+const isMenuOpen = ref(false);
 
 // 快捷键支持 (Ctrl/Cmd + K)
 onMounted(() => {
