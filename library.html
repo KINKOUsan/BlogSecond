@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书馆 - 我的个人博客</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        morandi: {
+                            bg: '#F7F5F2',
+                            text: '#4A403A',
+                            subtext: '#8C8580',
+                            accent: '#9BA8A8',
+                            card: '#FFFFFF',
+                            hover: '#E8E6E3',
+                            tag: '#D4D0C8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F7F5F2; }
+        ::-webkit-scrollbar-thumb { background: #D4D0C8; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9BA8A8; }
+    </style>
+</head>
+<body class="bg-morandi-bg text-morandi-text font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- 导航栏 -->
+    <nav class="bg-morandi-card/90 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b border-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="text-2xl font-bold tracking-wider text-morandi-text">MyBlog</a>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="text-morandi-text hover:text-morandi-accent transition-colors font-medium">首页</a>
+                    <a href="categories.html" class="text-morandi-text hover:text-morandi-accent transition-colors font-medium">文章分类</a>
+                    <a href="about.html" class="text-morandi-text hover:text-morandi-accent transition-colors font-medium">关于我</a>
+                    <a href="library.html" class="text-morandi-accent font-medium">图书馆</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="text-morandi-text hover:text-morandi-accent transition-colors p-2 rounded-full hover:bg-morandi-hover">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </button>
+                    <button class="md:hidden text-morandi-text hover:text-morandi-accent p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-3xl font-bold text-morandi-text mb-4">我的图书馆</h1>
+            <p class="text-morandi-subtext max-w-2xl mx-auto">阅读是灵魂的避难所。这里展示了我读过或正在阅读的书籍。</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            
+            <!-- 书籍 1 -->
+            <div class="group relative aspect-[2/3] bg-morandi-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
+                <img src="images/119896322_p0.png" alt="Book Cover" class="w-full h-full object-cover">
+                <!-- 悬停遮罩 -->
+                <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-4 text-center text-white">
+                    <h3 class="font-bold text-lg mb-2">百年孤独</h3>
+                    <p class="text-xs text-gray-300 mb-3">加西亚·马尔克斯</p>
+                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                    <p class="text-xs mt-3 line-clamp-3 text-gray-200">魔幻现实主义的巅峰之作，讲述布恩迪亚家族七代人的传奇故事。</p>
+                </div>
+            </div>
+
+            <!-- 书籍 2 -->
+            <div class="group relative aspect-[2/3] bg-morandi-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
+                <img src="images/110257210_p0.jpg" alt="Book Cover" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-4 text-center text-white">
+                    <h3 class="font-bold text-lg mb-2">设计心理学</h3>
+                    <p class="text-xs text-gray-300 mb-3">唐纳德·诺曼</p>
+                    <div class="flex text-yellow-400 text-xs">★★★★☆</div>
+                    <p class="text-xs mt-3 line-clamp-3 text-gray-200">日常用品设计的经典之作，设计师必读。</p>
+                </div>
+            </div>
+
+            <!-- 书籍 3 -->
+            <div class="group relative aspect-[2/3] bg-morandi-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
+                <img src="images/110486537_p0.jpg" alt="Book Cover" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-4 text-center text-white">
+                    <h3 class="font-bold text-lg mb-2">深入浅出Node.js</h3>
+                    <p class="text-xs text-gray-300 mb-3">朴灵</p>
+                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                    <p class="text-xs mt-3 line-clamp-3 text-gray-200">Node.js 进阶必读，深入理解异步I/O和事件循环。</p>
+                </div>
+            </div>
+
+            <!-- 书籍 4 -->
+            <div class="group relative aspect-[2/3] bg-morandi-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
+                <img src="images/113612055_p0.jpg" alt="Book Cover" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-4 text-center text-white">
+                    <h3 class="font-bold text-lg mb-2">瓦尔登湖</h3>
+                    <p class="text-xs text-gray-300 mb-3">梭罗</p>
+                    <div class="flex text-yellow-400 text-xs">★★★★☆</div>
+                    <p class="text-xs mt-3 line-clamp-3 text-gray-200">宁静致远，回归自然，寻找内心的平静。</p>
+                </div>
+            </div>
+
+            <!-- 书籍 5 -->
+            <div class="group relative aspect-[2/3] bg-morandi-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
+                <img src="images/119896322_p0.png" alt="Book Cover" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-4 text-center text-white">
+                    <h3 class="font-bold text-lg mb-2">JavaScript高级程序设计</h3>
+                    <p class="text-xs text-gray-300 mb-3">马特·弗里斯比</p>
+                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                    <p class="text-xs mt-3 line-clamp-3 text-gray-200">红宝书，前端开发者的圣经。</p>
+                </div>
+            </div>
+
+             <!-- 书籍 6 -->
+             <div class="group relative aspect-[2/3] bg-morandi-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
+                <img src="images/110257210_p0.jpg" alt="Book Cover" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-4 text-center text-white">
+                    <h3 class="font-bold text-lg mb-2">黑客与画家</h3>
+                    <p class="text-xs text-gray-300 mb-3">保罗·格雷厄姆</p>
+                    <div class="flex text-yellow-400 text-xs">★★★★☆</div>
+                    <p class="text-xs mt-3 line-clamp-3 text-gray-200">硅谷创业教父的文集，充满智慧与洞见。</p>
+                </div>
+            </div>
+
+            <!-- 书籍 7 -->
+            <div class="group relative aspect-[2/3] bg-morandi-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
+                <img src="images/110486537_p0.jpg" alt="Book Cover" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-4 text-center text-white">
+                    <h3 class="font-bold text-lg mb-2">原则</h3>
+                    <p class="text-xs text-gray-300 mb-3">雷·达里奥</p>
+                    <div class="flex text-yellow-400 text-xs">★★★☆☆</div>
+                    <p class="text-xs mt-3 line-clamp-3 text-gray-200">生活与工作中的原则，建立自己的系统。</p>
+                </div>
+            </div>
+
+            <!-- 书籍 8 -->
+            <div class="group relative aspect-[2/3] bg-morandi-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
+                <img src="images/113612055_p0.jpg" alt="Book Cover" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-4 text-center text-white">
+                    <h3 class="font-bold text-lg mb-2">人类简史</h3>
+                    <p class="text-xs text-gray-300 mb-3">尤瓦尔·赫拉利</p>
+                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                    <p class="text-xs mt-3 line-clamp-3 text-gray-200">颠覆认知的历史书，重新思考人类的过去与未来。</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-white border-t border-gray-100 py-8 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-morandi-subtext text-sm">© 2023 MyBlog. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-6 text-sm text-morandi-subtext">
+                <a href="#" class="hover:text-morandi-text">隐私政策</a>
+                <a href="#" class="hover:text-morandi-text">服务条款</a>
+                <a href="#" class="hover:text-morandi-text">联系我们</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

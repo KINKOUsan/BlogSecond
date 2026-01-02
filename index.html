@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人博客</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        morandi: {
+                            bg: '#F7F5F2',      // 极浅的暖灰背景
+                            text: '#4A403A',    // 深咖色文字
+                            subtext: '#8C8580', // 浅咖色辅助文字
+                            accent: '#9BA8A8',  // 莫兰迪绿/蓝 (用于按钮、高亮)
+                            card: '#FFFFFF',    // 卡片背景
+                            hover: '#E8E6E3',   // 悬停背景
+                            tag: '#D4D0C8'      // 标签背景
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 自定义滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F7F5F2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4D0C8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9BA8A8;
+        }
+    </style>
+</head>
+<body class="bg-morandi-bg text-morandi-text font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- 导航栏 -->
+    <nav class="bg-morandi-card/90 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b border-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold tracking-wider text-morandi-text">MyBlog</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="text-morandi-text hover:text-morandi-accent transition-colors font-medium">首页</a>
+                    <a href="categories.html" class="text-morandi-text hover:text-morandi-accent transition-colors font-medium">文章分类</a>
+                    <a href="about.html" class="text-morandi-text hover:text-morandi-accent transition-colors font-medium">关于我</a>
+                    <a href="library.html" class="text-morandi-text hover:text-morandi-accent transition-colors font-medium">图书馆</a>
+                </div>
+
+                <!-- Icons -->
+                <div class="flex items-center space-x-4">
+                    <button class="text-morandi-text hover:text-morandi-accent transition-colors p-2 rounded-full hover:bg-morandi-hover">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-morandi-text hover:text-morandi-accent p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- 英雄区 (Hero Section) -->
+        <section class="mb-12 rounded-2xl overflow-hidden shadow-lg relative group h-[400px] md:h-[500px]">
+            <!-- 背景图 -->
+            <img src="images/119896322_p0.png" alt="Featured Post" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <!-- 遮罩层 -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <!-- 内容 -->
+            <div class="absolute bottom-0 left-0 p-6 md:p-10 w-full md:w-2/3 lg:w-1/2 text-white">
+                <span class="inline-block px-3 py-1 bg-morandi-accent text-white text-xs font-semibold tracking-wide uppercase rounded-full mb-3">置顶推荐</span>
+                <h1 class="text-3xl md:text-4xl font-bold mb-3 leading-tight">探索未知的边界：如何在日常生活中寻找灵感</h1>
+                <p class="text-gray-200 text-sm md:text-base line-clamp-2 mb-4">
+                    生活中的灵感无处不在，只要我们有一双善于发现的眼睛。本文将带你走进摄影师的视角，重新审视那些被忽略的日常细节...
+                </p>
+                <a href="#" class="inline-flex items-center text-white font-medium hover:underline">
+                    阅读全文 
+                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+        </section>
+
+        <div class="flex flex-col lg:flex-row gap-10">
+            <!-- 左侧文章列表 -->
+            <div class="lg:w-3/4">
+                <div class="flex justify-between items-end mb-6">
+                    <h2 class="text-2xl font-bold text-morandi-text relative pl-4">
+                        <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-6 bg-morandi-accent rounded-full"></span>
+                        最新文章
+                    </h2>
+                    <a href="#" class="text-sm text-morandi-subtext hover:text-morandi-accent">查看更多 &rarr;</a>
+                </div>
+
+                <!-- 文章网格 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    
+                    <!-- 文章卡片 1 -->
+                    <article class="bg-morandi-card rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full">
+                        <div class="h-48 overflow-hidden">
+                            <img src="images/110257210_p0.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="px-2 py-1 bg-gray-100 text-morandi-subtext text-xs rounded-md">生活感悟</span>
+                                <span class="text-morandi-subtext text-xs">2023-10-24</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 hover:text-morandi-accent transition-colors line-clamp-2">秋日的午后，一杯咖啡的时光</h3>
+                            <p class="text-morandi-subtext text-sm line-clamp-3 mb-4 flex-grow">
+                                在忙碌的工作之余，找一个安静的角落，享受片刻的宁静。阳光透过树叶洒在桌面上，斑驳的光影...
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- 文章卡片 2 -->
+                    <article class="bg-morandi-card rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full">
+                        <div class="h-48 overflow-hidden">
+                            <img src="images/110486537_p0.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="px-2 py-1 bg-gray-100 text-morandi-subtext text-xs rounded-md">技术分享</span>
+                                <span class="text-morandi-subtext text-xs">2023-10-20</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 hover:text-morandi-accent transition-colors line-clamp-2">Tailwind CSS 实战技巧解析</h3>
+                            <p class="text-morandi-subtext text-sm line-clamp-3 mb-4 flex-grow">
+                                深入探讨如何使用 Utility-First CSS 框架快速构建现代化的网页界面，以及如何自定义配置...
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- 文章卡片 3 -->
+                    <article class="bg-morandi-card rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full">
+                        <div class="h-48 overflow-hidden">
+                            <img src="images/113612055_p0.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="px-2 py-1 bg-gray-100 text-morandi-subtext text-xs rounded-md">旅行日记</span>
+                                <span class="text-morandi-subtext text-xs">2023-10-15</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 hover:text-morandi-accent transition-colors line-clamp-2">远方的山川与湖海：西藏之旅</h3>
+                            <p class="text-morandi-subtext text-sm line-clamp-3 mb-4 flex-grow">
+                                站在海拔4000米的高原上，呼吸着稀薄而纯净的空气，眼前的景色美得让人窒息...
+                            </p>
+                        </div>
+                    </article>
+
+                     <!-- 文章卡片 4 (重复用于填充网格) -->
+                     <article class="bg-morandi-card rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full">
+                        <div class="h-48 overflow-hidden">
+                            <img src="images/119896322_p0.png" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="px-2 py-1 bg-gray-100 text-morandi-subtext text-xs rounded-md">阅读笔记</span>
+                                <span class="text-morandi-subtext text-xs">2023-10-08</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 hover:text-morandi-accent transition-colors line-clamp-2">《百年孤独》读后感</h3>
+                            <p class="text-morandi-subtext text-sm line-clamp-3 mb-4 flex-grow">
+                                马尔克斯笔下的马孔多，不仅仅是一个村庄，更是一段人类历史的缩影。孤独是永恒的主题...
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- 文章卡片 5 -->
+                    <article class="bg-morandi-card rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full">
+                        <div class="h-48 overflow-hidden">
+                            <img src="images/110257210_p0.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="px-2 py-1 bg-gray-100 text-morandi-subtext text-xs rounded-md">美食探店</span>
+                                <span class="text-morandi-subtext text-xs">2023-10-01</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 hover:text-morandi-accent transition-colors line-clamp-2">寻找城市里最地道的日式拉面</h3>
+                            <p class="text-morandi-subtext text-sm line-clamp-3 mb-4 flex-grow">
+                                浓郁的豚骨汤底，劲道的面条，加上溏心蛋和叉烧，这是一碗让人感到幸福的面...
+                            </p>
+                        </div>
+                    </article>
+                     <!-- 文章卡片 6 -->
+                     <article class="bg-morandi-card rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full">
+                        <div class="h-48 overflow-hidden">
+                            <img src="images/110486537_p0.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="px-2 py-1 bg-gray-100 text-morandi-subtext text-xs rounded-md">编程人生</span>
+                                <span class="text-morandi-subtext text-xs">2023-09-28</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 hover:text-morandi-accent transition-colors line-clamp-2">为什么我依然热爱写代码</h3>
+                            <p class="text-morandi-subtext text-sm line-clamp-3 mb-4 flex-grow">
+                                代码不仅仅是冷冰冰的逻辑，它是创造力的延伸，是构建世界的积木...
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+            <!-- 右侧侧边栏 -->
+            <aside class="lg:w-1/4 space-y-8">
+                
+                <!-- 个人简介 -->
+                <div class="bg-morandi-card rounded-xl p-6 shadow-sm text-center">
+                    <div class="relative w-24 h-24 mx-auto mb-4">
+                        <img src="images/110257210_p0.jpg" alt="Avatar" class="w-24 h-24 rounded-full object-cover border-4 border-morandi-bg">
+                        <div class="absolute bottom-0 right-0 w-6 h-6 bg-morandi-accent rounded-full border-2 border-white flex items-center justify-center">
+                            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-morandi-text mb-1">博主小明</h3>
+                    <p class="text-morandi-subtext text-sm mb-4">前端开发 / 摄影爱好者 / 阅读达人</p>
+                    <div class="flex justify-center space-x-3 mb-6">
+                        <!-- Social Icons -->
+                        <a href="#" class="text-morandi-subtext hover:text-morandi-accent"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                        <a href="#" class="text-morandi-subtext hover:text-morandi-accent"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                    </div>
+                    <button class="w-full bg-morandi-text text-white py-2 rounded-lg hover:bg-morandi-accent transition-colors">关注我</button>
+                </div>
+
+                <!-- 热门标签云 -->
+                <div class="bg-morandi-card rounded-xl p-6 shadow-sm">
+                    <h3 class="text-lg font-bold text-morandi-text mb-4 border-b pb-2 border-gray-100">热门标签</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="#" class="px-3 py-1 bg-gray-100 hover:bg-morandi-accent hover:text-white rounded-full text-sm text-morandi-subtext transition-colors">前端开发</a>
+                        <a href="#" class="px-3 py-1 bg-gray-100 hover:bg-morandi-accent hover:text-white rounded-full text-sm text-morandi-subtext transition-colors">Vue3</a>
+                        <a href="#" class="px-3 py-1 bg-gray-100 hover:bg-morandi-accent hover:text-white rounded-full text-sm text-morandi-subtext transition-colors">React</a>
+                        <a href="#" class="px-3 py-1 bg-gray-100 hover:bg-morandi-accent hover:text-white rounded-full text-sm text-morandi-subtext transition-colors">生活随笔</a>
+                        <a href="#" class="px-3 py-1 bg-gray-100 hover:bg-morandi-accent hover:text-white rounded-full text-sm text-morandi-subtext transition-colors">摄影</a>
+                        <a href="#" class="px-3 py-1 bg-gray-100 hover:bg-morandi-accent hover:text-white rounded-full text-sm text-morandi-subtext transition-colors">旅行</a>
+                        <a href="#" class="px-3 py-1 bg-gray-100 hover:bg-morandi-accent hover:text-white rounded-full text-sm text-morandi-subtext transition-colors">读书</a>
+                        <a href="#" class="px-3 py-1 bg-gray-100 hover:bg-morandi-accent hover:text-white rounded-full text-sm text-morandi-subtext transition-colors">Tailwind CSS</a>
+                    </div>
+                </div>
+
+                <!-- 邮件订阅 -->
+                <div class="bg-morandi-accent/10 rounded-xl p-6 shadow-sm border border-morandi-accent/20">
+                    <h3 class="text-lg font-bold text-morandi-text mb-2">订阅更新</h3>
+                    <p class="text-sm text-morandi-subtext mb-4">每周精选文章，直接发送到您的邮箱。</p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="您的邮箱地址" class="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-accent focus:border-transparent bg-white">
+                        <button type="submit" class="w-full bg-morandi-accent text-white py-2 rounded-lg hover:bg-opacity-90 transition-colors shadow-md">
+                            立即订阅
+                        </button>
+                    </form>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-white border-t border-gray-100 py-8 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-morandi-subtext text-sm">© 2023 MyBlog. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-6 text-sm text-morandi-subtext">
+                <a href="#" class="hover:text-morandi-text">隐私政策</a>
+                <a href="#" class="hover:text-morandi-text">服务条款</a>
+                <a href="#" class="hover:text-morandi-text">联系我们</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

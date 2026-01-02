@@ -1,0 +1,22 @@
+{
+  "name": "blog-second-nuxt",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@notionhq/client": "^5.6.0",
+    "dotenv": "^17.2.3",
+    "nuxt": "^3.8.0",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.8.0"
+  }
+}
